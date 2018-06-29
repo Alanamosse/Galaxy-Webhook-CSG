@@ -1,35 +1,38 @@
 $(document).ready(function() {
 
+var pages=new Array();
+ pages[0]="https://citizensort.org/livinglinks/hmc.php";
+ pages[1]="https://citizensort.org/web.php/forgottenisland";
+ pages[2]="https://openstack-192-168-100-22.genouest.org/";
+ pages[3]="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_defined";
+
+var rand=Math.floor(Math.random()*pages.length);
+
 var PHDComicsAppView = Backbone.View.extend({
         el : '#itch',
 
                     appTemplate: _.template(
-                '<iframe id="myFrame" src="https://citizensort.org/livinglinks/hmc.php" style="height:600px;width:100%"></iframe>'
+                '<div id ="ConteneurIf">'+
+                '<iframe id="myFrame" src="'+pages[rand]+'" style="height:600px;width:100%"></iframe>'+
+                '</div>'
             ),
-            initialize: function() {
+
+        initialize: function() {
             this.$el.html(this.appTemplate());
-        },
-
-    });
-var AppView2 = Backbone.View.extend({
-        el : '#itch',
-
-                    appTemplate: _.template(
-                '<iframe id="myFrame" src="https://citizensort.org/web.php/forgottenisland" style="height:600px;width:100%"></iframe>'
-            ),
-            initialize: function() {
-            this.$el.html(this.appTemplate());
-        },
-
-    });
-
-var rand=Math.random();
-console.log(rand);
-
-if (rand>=0.5) {
-    new PHDComicsAppView();
-}else{
-    new AppView2();
-}
+        }
 
 });
+
+new PHDComicsAppView();
+
+var clickIframe = window.setInterval(checkFocus, 100);
+var i = 0;
+
+function checkFocus() {
+  if(document.activeElement == document.getElementById("myFrame")) {
+        console.log("clicked "+(i++));
+        window.focus();
+   }
+}
+});
+
