@@ -1,2 +1,4 @@
 # Galaxy-Webhook-CSG
-Galaxy Webhook to catch Citzen Sciences Games 
+Galaxy Webhook to catch Citzen Sciences Games
+
+ 
