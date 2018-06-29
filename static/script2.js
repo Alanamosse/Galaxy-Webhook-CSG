@@ -12,7 +12,7 @@ var PHDComicsAppView = Backbone.View.extend({
         el : '#itch',
 
                     appTemplate: _.template(
-                '<iframe id="myFrame" src=page[rand] style="height:600px;width:100%"></iframe>'
+                '<iframe id="myFrame" src=pages[rand] style="height:600px;width:100%"></iframe>'
             ),
             initialize: function() {
             this.$el.html(this.appTemplate());
